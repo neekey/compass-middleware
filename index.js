@@ -1,4 +1,4 @@
-var Compass = require( './lib/compass' );
+var Compass = require( 'compass-compiler' );
 var FS = require( 'fs' );
 var _ = require( 'lodash' );
 var Path = require( 'path' );
@@ -74,7 +74,23 @@ module.exports = function( options, compassOptions ){
                 if( callbacks.length == 0 ){
 
                     callbacks.push( next );
-                    Compass.compile( _compassOptions, function(){
+                    Compass.compile( _compassOptions, function( err, result, code ){
+
+                        if (code === 127) {
+                            console.warn(
+                                    'You need to have Ruby and Compass installed ' +
+                                    'and in your system PATH for this task to work. '
+                            );
+                        }
+
+                        // `compass compile` exits with 1 and outputs "Nothing to compile"
+                        // on stderr when it has nothing to compile.
+                        // https://github.com/chriseppstein/compass/issues/993
+                        // Don't fail the task in this situation.
+                        if (code === 1 && !/Nothing to compile|Compass can't find any Sass files to compile/g.test(result.stderr)) {
+                            console.warn('↑');
+                        }
+
                         callbacks.forEach(function( cb ){
                             cb();
                         });

@@ -1,13 +1,13 @@
 {
   "name": "compass-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "compass-middleware ==================",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha test/index.spec.js -R spec"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,12 @@
     "dargs": "^2.0.0",
     "lodash": "^2.4.1",
     "tmp": "0.0.24",
-    "bin-version-check": "^0.1.0"
+    "bin-version-check": "^0.1.0",
+    "compass-compiler": "0.0.1"
   },
   "devDependencies": {
     "express": "~4.8.7",
+    "mocha": "~1.21.4",
     "supertest": "~0.13.0"
   }
 }
