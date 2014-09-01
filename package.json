@@ -1,0 +1,33 @@
+{
+  "name": "compass-middleware",
+  "version": "0.0.1",
+  "description": "compass-middleware ==================",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neekey/compass-middleware.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neekey/compass-middleware/issues"
+  },
+  "homepage": "https://github.com/neekey/compass-middleware",
+  "dependencies": {
+    "glob": "^4.0.5",
+    "dargs": "^2.0.0",
+    "lodash": "^2.4.1",
+    "tmp": "0.0.24",
+    "bin-version-check": "^0.1.0"
+  },
+  "devDependencies": {
+    "express": "~4.8.7",
+    "supertest": "~0.13.0"
+  }
+}

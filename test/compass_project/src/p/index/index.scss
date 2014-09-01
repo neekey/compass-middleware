@@ -1,0 +1,9 @@
+@import "p/index/i/*.png";
+
+body {
+  color: red;
+
+  .rank {
+    @include i-sprite(rank_1)
+  }
+}

@@ -1,0 +1,11 @@
+.i-sprite, body .rank {
+  background-image: url('http://host.com/my/path/p/index/i-s6f02c77bab.png');
+  background-repeat: no-repeat;
+}
+
+body {
+  color: red;
+}
+body .rank {
+  background-position: 0 0;
+}

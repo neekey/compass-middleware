@@ -36,8 +36,6 @@ module.exports = function( options, compassOptions ){
 
     _.each( _compassOptions, function( opt, key ){
 
-        console.log( opt, key );
-
         if( srcPaths.indexOf( key ) >= 0 ){
 
             if( _.isArray( opt ) ){
@@ -52,12 +50,16 @@ module.exports = function( options, compassOptions ){
         }
 
         if (destPaths.indexOf( key ) >= 0) {
-            console.log( 'dest', key );
-            _compassOptions[ key ] = Path.join( dest, opt);
+
+            // 某些路径使用的是相对当前工作目录的路径
+            if( key == 'generatedImagesDir' || key == 'cacheDir' ){
+                _compassOptions[ key ] = Path.relative( process.cwd() , Path.join( dest, opt) );
+            }
+            else {
+                _compassOptions[ key ] = Path.join( dest, opt);
+            }
         }
     });
-
-    console.log( _compassOptions, options );
 
     var callbacks = [];
 
