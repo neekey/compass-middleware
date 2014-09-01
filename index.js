@@ -90,10 +90,24 @@ module.exports = function( options, compassOptions ){
                 next();
             }
         }
+        // Handle sprite images.
+        else if( /\/.+-.+\.png\??/.test( req.url ) ){
+
+            var imagePath = Path.join( dest, req.url );
+
+            if( FS.existsSync( imagePath ) ){
+                res.type('png');
+                res.send( FS.readFileSync( imagePath ) );
+            }
+            else {
+                next();
+            }
+        }
         else {
             next();
         }
     }
+
 };
 
 //module.exports = Compass;
