@@ -23,10 +23,7 @@ module.exports = function( options, compassOptions ){
 
     var destPaths = [
         'cssPath',
-        'cssDir',
-        'generatedImagesDir',
-        'generatedImagesPath',
-        'cacheDir'
+        'cssDir'
     ];
 
     // https://github.com/Compass/compass/issues/1108#issuecomment-53404779
@@ -51,13 +48,7 @@ module.exports = function( options, compassOptions ){
 
         if (destPaths.indexOf( key ) >= 0) {
 
-            // 某些路径使用的是相对当前工作目录的路径
-            if( key == 'generatedImagesDir' || key == 'cacheDir' ){
-                _compassOptions[ key ] = Path.relative( process.cwd() , Path.join( dest, opt) );
-            }
-            else {
-                _compassOptions[ key ] = Path.join( dest, opt);
-            }
+            _compassOptions[ key ] = Path.join( dest, opt);
         }
     });
 
